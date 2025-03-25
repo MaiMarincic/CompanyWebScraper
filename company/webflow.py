@@ -25,6 +25,8 @@ class WebflowNameExtractor(NameExtractor):
 
 class WebflowLogoExtractor(LogoExtractor):
     def __call__(self, soup: BeautifulSoup) -> LogoData:
+        # This does not work because the webside compiles the logo with a bunch of .svg that are all a small part of
+        # the entire logo. It could be combined however I did not spend time on this since I did not think it is necessary
         logo_tag = soup.find("img", {"alt": "Webflow"}) or soup.find("img", {"class": "logo"})
         
         if not logo_tag or not logo_tag.get('src'):
