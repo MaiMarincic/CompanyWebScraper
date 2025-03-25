@@ -1,4 +1,5 @@
-AI Company Website Scraper
+# AI Company Website Scraper
+
 A flexible, modular framework for scraping AI company websites with a focus on long-term extensibility and scalability.
 What It Does
 This scraper extracts and organizes key information from company websites:
