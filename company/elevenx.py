@@ -26,11 +26,11 @@ class ElevenXLogoExtractor(LogoExtractor):
         logo_url = logo_tag['src']
         format_type = "svg" if logo_url.endswith('.svg') else "png"
         
-        return {
-            "found": True,
-            "format": format_type,
-            "url": logo_url
-        }
+        return LogoData(
+            found=True,
+            format=format_type,
+            url=logo_url
+        )
 
 class ElevenXPartnersExtractor(PartnersExtractor):
     def __call__(self, soup: BeautifulSoup) -> PartnersData:
@@ -67,10 +67,10 @@ class ElevenXPartnersExtractor(PartnersExtractor):
                 "logo_url": img_url
             })
         
-        return {
-            "count": len(partners),
-            "partners": partners
-        }
+        return PartnersData(
+            count=len(partners),
+            partners=partners
+        )
 
 name_extractor = ElevenXNameExtractor()
 logo_extractor = ElevenXLogoExtractor()

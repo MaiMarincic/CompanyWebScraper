@@ -25,21 +25,19 @@ class WebflowNameExtractor(NameExtractor):
 
 class WebflowLogoExtractor(LogoExtractor):
     def __call__(self, soup: BeautifulSoup) -> LogoData:
-        # This does not work because the webside compiles the logo with a bunch of .svg that are all a small part of
-        # the entire logo. It could be combined however I did not spend time on this since I did not think it is necessary
         logo_tag = soup.find("img", {"alt": "Webflow"}) or soup.find("img", {"class": "logo"})
         
         if not logo_tag or not logo_tag.get('src'):
-            return {"found": False}
+            return LogoData(found=False)
         
         logo_url = logo_tag['src']
         format_type = "svg" if logo_url.endswith('.svg') else "png"
         
-        return {
-            "found": True,
-            "format": format_type,
-            "url": logo_url
-        }
+        return LogoData(
+            found=True,
+            format=format_type,
+            url=logo_url
+        )
 
 class WebflowPartnersExtractor(PartnersExtractor):
     def __call__(self, soup: BeautifulSoup) -> PartnersData:
@@ -54,36 +52,32 @@ class WebflowPartnersExtractor(PartnersExtractor):
                 continue
                 
             img_url = img.get('src')
-            
             alt_text = img.get('alt', '').strip()
             
-            if alt_text and alt_text != "":
+            if alt_text:
                 company_name = alt_text.lower().replace(' ', '_')
             else:
                 filename = urlparse(img_url).path.split('/')[-1]
                 name_part = filename.split('.')[0]
                 
-                if '_' in name_part:
-                    company_name = name_part.split('_')[-1].lower()
-                else:
-                    company_name = name_part.lower()
+                company_name = name_part.split('_')[-1].lower() if '_' in name_part else name_part.lower()
             
             company_name = re.sub(r'\W+', '_', company_name).strip('_')
             
             if not company_name or company_name in unique_names:
                 continue
-                
+            
             unique_names.add(company_name)
             
-            partners.append({
-                "name": company_name,
-                "logo_url": img_url
-            })
+            partners.append(PartnerData(
+                name=company_name,
+                logo_url=img_url
+            ))
         
-        return {
-            "count": len(partners),
-            "partners": partners
-        }
+        return PartnersData(
+            count=len(partners),
+            partners=partners
+        )
 
 name_extractor = WebflowNameExtractor()
 logo_extractor = WebflowLogoExtractor()
