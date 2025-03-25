@@ -2,8 +2,7 @@
 
 Za uspešno reševanje naloge predpostavljam, da so podatki o strankah/partnerjih prisotni neposredno na spletni strani (brez dodatnega brskanja po domeni).
 
-Cilj je poiskati **splošne značilnosti (feature-je)**, ki se pogosto pojavljajo na spletnih straneh in nam omogočajo zanesljivo detekcijo strank. Predlagam naslednji **postopkovni pristop**:
-
+Predlagam naslednji **postopkovni pristop**:
 ---
 
 ### 1. **Iskanje skupin slik (strukturna ponovljivost)**  
