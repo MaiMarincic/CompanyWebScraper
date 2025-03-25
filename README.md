@@ -1,11 +1,13 @@
-# AI Company Website Scraper
+AI Company Website Scraper
+A flexible, modular framework for scraping AI company websites with a focus on long-term extensibility and scalability.
+What It Does
+This scraper extracts and organizes key information from company websites:
 
-This is a simple webscraper for companies with long term extensibility and scalibity in mind. 
-It scrapes the following:
-- Name of the companie whos' website it is. (Reduntant and it's more to show as example of additional Attributes)
-- Logo of the website
-- Logos and Names of parters
-It downloads all of the attributes and packs it into a neat json.
+Company name (included as an example of the attribute system)
+Company logo (in original format: SVG, PNG, etc.)
+Partner companies (names and logos)
+
+All data is downloaded, properly organized, and packed into a structured JSON file for easy access.
 
 ## Overview
 
@@ -31,6 +33,7 @@ This tool provides a clean, object-oriented approach to web scraping with a focu
 1. **Clone the repository**
 
 ```bash
+git clone git@github.com:MaiMarincic/CompanyWebScraper.git
 ```
 
 2. **Create a virtual environment (optional but recommended)**
