@@ -1,4 +1,4 @@
-# Identifikacija strank podjetja na spletni strani**
+# Identifikacija strank podjetja na spletni strani
 
 Za uspešno reševanje naloge predpostavljam, da so podatki o strankah/partnerjih prisotni neposredno na spletni strani (brez dodatnega brskanja po domeni).
 
